@@ -57,5 +57,3 @@ anya.info()
 petya.say()
 vasya.say()
 anya.say()
-
-# TODO: Попробуйте описать класс животных, Кошки, Собаки
