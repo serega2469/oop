@@ -28,8 +28,8 @@ class Human:  # Скорее всего этот класс уже не Human,
             self.many -= house_price
             # Тут лучше использовать скобки для переноса
             # текста, вместо слэша, как в 11 строке кода
-            return f'\nВы купили дом стоимостью: {house_price} руб.' \
-                   f' На счете осталось {self.many}'
+            return (f'\nВы купили дом стоимостью: {house_price} руб.'
+                    f' На счете осталось {self.many}')
 
 
 class Home:
@@ -46,7 +46,7 @@ class Home:
 class New_home(Home):  # Почитать можно тут: https://skillbox.ru/media/code/notatsii-v-programmirovanii/
     def __init__(self, area, cost):
         # Тут ошибка, забыли круглые скобки после super
-        super.__init__(area, cost)
+        super().__init__(area, cost)
 
 
 if __name__ == '__main__':  # Используйте точку входа,
