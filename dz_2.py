@@ -7,10 +7,10 @@ class Alphabet:
         self.lang = lang
         self.letters = letters
 
-    def print(self):
+    def print(self) -> None:
         print(self.letters)
 
-    def letters_num(self):
+    def letters_num(self) -> int:
         return len(self.letters)
 
 
@@ -28,7 +28,11 @@ class EngAlphabet(Alphabet):
             print('Не относится')
 
     def letters_num(self):
-        return super().letters_num()
+        # Условие: Переопределите метод letters_num() - пусть в текущем классе
+        # он будет возвращать значение свойства __letters_num.
+
+        return super().letters_num()  # Значит, тут Вы должны
+        # возвратить self.приватное_статическое_свойство
 
     @staticmethod
     def example():
@@ -39,4 +43,6 @@ if __name__ == '__main__':
     user_1 = EngAlphabet('En', string.ascii_uppercase)
     user_1.print()
     print(user_1.letters_num())
+    user_1.is_en_letter('F')
     user_1.is_en_letter('Щ')
+    print(EngAlphabet.example())
