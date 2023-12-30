@@ -31,7 +31,7 @@ class EngAlphabet(Alphabet):
         # Условие: Переопределите метод letters_num() - пусть в текущем классе
         # он будет возвращать значение свойства __letters_num.
 
-        return super().letters_num()  # Значит, тут Вы должны
+        return self.__letters_num  # Значит, тут Вы должны
         # возвратить self.приватное_статическое_свойство
 
     @staticmethod
