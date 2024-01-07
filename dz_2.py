@@ -1,7 +1,7 @@
 import string
 
 
-class Alphabet:  # В этом классе все правильно!
+class Alphabet:
     def __init__(self, lang: str, letters: str) -> None:
         self.lang = lang
         self.letters = letters
@@ -17,20 +17,12 @@ class EngAlphabet(Alphabet):
     # Статическое свойство
     __letters_num = 0
 
-    # 1. Согласно ТЗ конструктор этого класса ничего не принимает.
-    """
-    Условие:
-    2. Создайте метод __init__(), внутри которого будет вызываться родительский метод __init__(). 
-    В качестве параметров ему будут передаваться обозначение языка(например, 'En') и строка, состоящая 
-    из всех букв алфавита(можно воспользоваться свойством ascii_uppercase из модуля string).
-    """
-
     def __init__(self):
         super().__init__(lang='En', letters=string.ascii_uppercase)
 
     def is_en_letter(self, letter: str):
-        if letter in self.letters:  # 2. После того как исправите в конструкторе,
-            # Вам здесь нужно проверить букву в self.letters, вместо string.ascii_letters
+        if letter.upper() in self.letters:  # При проверке, переданный
+            # аргумент лучше перевести к верхнему регистру
             print('Буква относится к английскому алфавиту')
         else:
             print('Не относится')
@@ -46,7 +38,6 @@ class EngAlphabet(Alphabet):
 
 
 if __name__ == '__main__':
-    # 3. Тут тоже изменится см. замечание №1
     user_1 = EngAlphabet()
 
     user_1.print()
@@ -54,5 +45,3 @@ if __name__ == '__main__':
     user_1.is_en_letter('F')
     user_1.is_en_letter('Щ')
     print(EngAlphabet.example())
-
-# После того, как все исправите удалите мои комментарии из кода.
