@@ -25,11 +25,11 @@ class EngAlphabet(Alphabet):
     из всех букв алфавита(можно воспользоваться свойством ascii_uppercase из модуля string).
     """
 
-    def __init__(self, lang, letters):
-        super().__init__(lang, letters)
+    def __init__(self):
+        super().__init__(lang='En', letters=string.ascii_uppercase)
 
     def is_en_letter(self, letter: str):
-        if letter in string.ascii_letters:  # 2. После того как исправите в конструкторе,
+        if letter in self.letters:  # 2. После того как исправите в конструкторе,
             # Вам здесь нужно проверить букву в self.letters, вместо string.ascii_letters
             print('Буква относится к английскому алфавиту')
         else:
@@ -47,7 +47,7 @@ class EngAlphabet(Alphabet):
 
 if __name__ == '__main__':
     # 3. Тут тоже изменится см. замечание №1
-    user_1 = EngAlphabet('En', string.ascii_uppercase)
+    user_1 = EngAlphabet()
 
     user_1.print()
     print(user_1.letters_num())
