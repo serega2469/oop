@@ -21,6 +21,11 @@ class EngAlphabet(Alphabet):
         super().__init__(lang='En', letters=string.ascii_uppercase)
 
     def is_en_letter(self, letter: str):
+        """
+
+        :param letter:
+        :return:
+        """
         if letter.upper() in self.letters:  # При проверке, переданный
             # аргумент лучше перевести к верхнему регистру
             print('Буква относится к английскому алфавиту')
@@ -38,6 +43,12 @@ class EngAlphabet(Alphabet):
 
 
 if __name__ == '__main__':
+
+    # """Минимальное количество постов."""
+    # MIN_AMOUNT = 15
+
+    # https://thomas-cokelaer.info/tutorials/sphinx/docstring_python.html
+    # reStructuredText
     user_1 = EngAlphabet()
 
     user_1.print()
