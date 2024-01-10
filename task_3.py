@@ -1,47 +1,128 @@
-class Drink:
-    volume = 200
+# class Phone:
+#     # Статические поля (переменные класса)
+#     default_color = 'Grey'
+#     default_model = 'C385'
+#
+#     def __init__(self, color, model):
+#         self.color = color
+#         self.model = model
+#
+#
+# my_phone_red = Phone('Red', 'I495')
+# # print(dir(my_phone_red))
+# # print(my_phone_red.default_color)
+# print(my_phone_red.color)
+#
+# # print(Phone.default_color)
+# # Phone.default_color = 'Black'
+# # print(Phone.default_color)
 
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+# 1. МЕТОДЫ ЭКЗЕМПЛЯРА КЛАССА (ОБЫЧНЫЕ МЕТОДЫ)
 
-        self.remains = self.volume
+# class Phone:
+#
+#     def __init__(self, color, model):
+#         self.color = color
+#         self.model = model
+#
+#     # Обычный метод
+#     # Первый параметр метода - self
+#     def check_sim(self, mobile_operator):
+#         if self.model == 'I785' and mobile_operator == 'MTS':
+#             print('Your mobile operator is MTS')
+#
+#
+# my_phone = Phone('red', 'I785')
+# print(my_phone.check_sim('MTS'))
 
-    def drink_info(self):
+# 2. СТАТИЧЕСКИЕ МЕТОДЫ
 
-        print(f'Название: {self.name}. Стоимость: {self.price}. Обьём: {self.volume}. Осталось {self.remains} ')
+# class Phone:
+#
+#     # Статический метод справочного характера
+#     # Возвращает хэш по номеру модели
+#     # self внутри метода отсутствует
+#     @staticmethod
+#     def model_hash(model):
+#         if model == 'I785':
+#             return 34565
+#         elif model == 'K498':
+#             return 45567
+#         else:
+#             return None
+#
+#     # Обычный метод
+#     def check_sim(self, mobile_operator):
+#         pass
+#
+#
+# print(Phone.model_hash('K498'))
 
-    def _is_enough(self, need):
-        if self.remains >= need and self.remains > 0:
-            return True
-        print('Осталось недостаточно напитка')
-        return False
+# МЕТОДЫ КЛАССА
 
-    def sip(self):
-        if self._is_enough(20):
-            self.remains -= 20
-            print('Друг сделал глоток')
+# class Phone:
+#
+#     def __init__(self, color, model, os):
+#         self.color = color
+#         self.model = model
+#         self.os = os
+#
+#     # Метод класса
+#     # Принимает 1) ссылку на класс Phone и 2) цвет в качестве параметров
+#     # Создает специфический объект класса Phone(особенность объекта в том, что это игрушечный телефон)
+#     # При этом вызывается инициализатор класса Phone
+#     # которому в качестве аргументов мы передаем цвет и модель,
+#     # соответствующую созданию игрушечного телефона
+#     @classmethod
+#     def toy_phone(cls, color):
+#         toy_phone = cls(color, 'ToyPhone', None)
+#         return toy_phone
+#
+#     # Статический метод
+#     @staticmethod
+#     def model_hash(model):
+#         pass
+#
+#     # Обычный метод
+#     def check_sim(self, mobile_operator):
+#         pass
+#
+#
+# my_toy_phone = Phone.toy_phone('Red')
+# print(my_toy_phone)
 
-    def small_sip(self):
-        if self._is_enough(10):
-            self.remains -= 10
-            print('Друг сделал маленький глоток')
+# УРОВНИ ДОСТУПА
 
-    def drink_all(self):
-        if self._is_enough(0):
-            self.remains = 0
-            print('Друг выпил напиток залпом')
+# PROTECTED
+
+# class Phone:
+#
+#     def __init__(self, color):
+#         # Объявляем защищенное поле _color
+#         self._color = color
+#
+#     @property  # Декоратор @property используется для методов класса
+#     # и делает их «атрибутами только для чтения».
+#     def color(self):
+#         return self._color
+#
+#
+# phone = Phone('Grey')
+# print(phone.color)
+
+# PRIVATE
+
+class Phone:
+
+    def __init__(self, color):
+        # Объявляем приватное поле __color
+        self.__color = color
+
+    def user(self):
+        return self.__color
 
 
-class Juice(Drink):
-    def __init__(self, name, price, taste):
-        super().__init__(name, price)
-        self.taste = taste
+phone = Phone('Grey')
 
-
-apple_juice = Juice('Сок', 250, 'яблочный')
-coffee = Drink('Кофе', 300)
-
-apple_juice.small_sip()
-apple_juice.sip()
-apple_juice.drink_info()
+# print(dir(phone))
+# print(phone._Phone__color)

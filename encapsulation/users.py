@@ -43,6 +43,10 @@ class BaseUser(AbstractUser):
             raise ValueError('Почта должна быть строкой')
         self.__email = value
 
+    @property
+    def username(self):
+        return self.__username
+
 
 class Admin(BaseUser):
     def __init__(self,
@@ -69,19 +73,9 @@ if __name__ == '__main__':
                     'Max',
                     'Ivanov',
                     is_admin=True)
-    print(admin_1.get_username())
-    # print(admin_1.get_password())
-
-    # Error
-    # print(admin_1.__password)
-    # admin_1.__password = 'qwerty123'
-    # print(admin_1.__password)
-
-    # Error
-    # print(admin_1.__email)
-
     print(admin_1.email)
-    admin_1.email = 'lala@mail.com'
+    admin_1.email = 'dffdffd'
     print(admin_1.email)
-    admin_1.email = 123
-    print(admin_1.email)
+
+
+
